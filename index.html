@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style type="text/css"></style>
+		<title>Clash of Clans Calculator</title>
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+	</head>
+
+	<body>
+		<h2>Clash of Clans Calculator</h2>
+		<table class="dataTable">
+			<tbody>
+				<tr>
+					<td class="sectionHeader"> Troops</td>
+				</tr>
+
+				<tr>
+					<td id="troops" class="section">
+						<table>
+							<!-- Regular Troops part 1a -->
+							<tbody>
+								<tr>
+								<!-- Barbarian -->
+									<td rowspan="2">
+										<img id="Barbarian_image" src="img/barbarian1.png">
+									</td>
+									<!-- Barbarian level selector tab -->
+									<td>
+										<select id="Barbarian_level" onchange="set_barb_lvl(); calculate_barb_cost(); calculate_barb_training_time();">
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+											<option>6</option>
+											<option>7</option>
+										</select>
+									</td>
+									<!-- Barbarians elixir costs image -->
+									<td>
+										<img id="Barbarian_elixirImage" src="img/dropElixir.png">
+									</td>
+									<!-- Barbarians elixir costs number output -->
+									<td class="elixir">
+										<span id="Barbarian_elixirCost" tabindex="-1">0</span>
+									</td>
+
+								<!-- Archer -->
+									<td rowspan="2">
+										<img id="Archer_image" src="img/archer1.png">
+									</td>
+									<!-- Archer level selector tab -->
+									<td>
+										<select id="Archer_level">
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+											<option>6</option>
+											<option>7</option>
+										</select>
+									</td>
+									<!-- Archers elixir costs image -->
+									<td>
+										<img id="Archer_elixirImage" src="img/dropElixir.png">
+									</td>
+									<!-- Archers elixir costs number output -->
+									<td class="elixir">
+										<span id="Archer_elixirCost" tabindex="-1">0</span>
+									</td>
+
+								<!-- Goblin -->
+									<td rowspan="2">
+										<img id="Goblin_image" src="img/goblin1.png">
+									</td>
+									<!-- Goblin level selector tab -->
+									<td>
+										<select id="Goblin_level">
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+											<option>6</option>
+										</select>
+									</td>
+									<!-- Goblins elixir costs image -->
+									<td>
+										<img id="Goblin_elixirImage" src="img/dropElixir.png">
+									</td>
+									<!-- Goblin elixir costs number output -->
+									<td class="elixir">
+										<span id="Goblin_elixirCost" tabindex="-1">0</span>
+									</td>
+
+								<!-- Giant -->
+									<td rowspan="2">
+										<img id="Giant_image" src="img/giant1.png">
+									</td>
+									<!-- Giant level selector tab -->
+									<td>
+										<select id="Giant_level">
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+											<option>6</option>
+										</select>
+									</td>
+									<!-- Giant elixir costs image -->
+									<td>
+										<img id="Giant_elixirImage" src="img/dropElixir.png">
+									</td>
+									<!-- Giant elixir costs number output -->
+									<td class="elixir">
+										<span id="Giant_elixirCost" tabindex="-1">0</span>
+									</td>	
+
+								<!-- Wall Breaker -->
+									<td rowspan="2">
+										<img id="Wall_Breaker_image" src="img/wallBreaker1.png">
+									</td>
+									<!-- Wall_Breaker level selector tab -->
+									<td>
+										<select id="Wall_Breaker_level">
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+											<option>6</option>
+										</select>
+									</td>
+									<!-- Wall_Breaker elixir costs image -->
+									<td>
+										<img id="Wall_Breaker_elixirImage" src="img/dropElixir.png">
+									</td>
+									<!-- Wall_Breaker elixir costs number output -->
+									<td class="elixir">
+										<span id="Wall_Breaker_elixirCost" tabindex="-1">0</span>
+									</td>		
+								</tr>
+
+							<!-- Regular Troops part 1b -->
+								<tr>
+								<!-- Barbarian -->
+									<!-- input number for amount of Barbarian troops -->
+									<td>
+										<input type="number" class="quantity" id="Barbarian_quantity" onchange="calculate_barb_cost(); calculate_barb_training_time();">
+									</td>
+									<!-- Barbarians clock image for training time number -->
+									<td class="clock_image">
+										<img src="img/clock.png">
+									</td>
+									<td class="time">
+										<span id="Barbarian_trainingTime" tabindex="-1">00:00:00</span>
+									</td>
+
+								<!-- Archer -->
+									<!-- input number for amount of Archer troops -->
+									<td>
+										<input type="number" class="quantity" id="Archer_quantity">
+									</td>
+									<!-- Archers clock image for training time number -->
+									<td class="clock_image">
+										<img src="img/clock.png">
+									</td>
+									<td class="time">
+										<span id="Archer_trainingTime" tabindex="-1">00:00:00</span>
+									</td>		
+
+								<!-- Goblin -->
+									<!-- input number for amount of Goblin troops -->
+									<td>
+										<input type="number" class="quantity" id="Goblin_quantity">
+									</td>
+									<!-- Goblins clock image for training time number -->
+									<td class="clock_image">
+										<img src="img/clock.png">
+									</td>
+									<td class="time">
+										<span id="Goblin_trainingTime" tabindex="-1">00:00:00</span>
+									</td>	
+									
+								<!-- Giant -->
+									<!-- input number for amount of Giant troops -->
+									<td>
+										<input type="number" class="quantity" id="Giant_quantity">
+									</td>
+									<!-- Giants clock image for training time number -->
+									<td class="clock_image">
+										<img src="img/clock.png">
+									</td>
+									<td class="time">
+										<span id="Giant_trainingTime" tabindex="-1">00:00:00</span>
+									</td>	
+									
+								<!-- Wall_Breaker -->
+									<!-- input number for amount of Wall_Breaker troops -->
+									<td>
+										<input type="number" class="quantity" id="Wall_Breaker_quantity">
+									</td>
+									<!-- Wall_Breakers clock image for training time number -->
+									<td class="clock_image">
+										<img src="img/clock.png">
+									</td>
+									<td class="time">
+										<span id="Wall_Breaker_trainingTime" tabindex="-1">00:00:00</span>
+									</td>					
+								</tr>	
+
+							<!-- Regular Troops Part 2a -->
+								<tr>
+								<!-- Balloon -->
+									<td rowspan="2">
+										<img id="Balloon_image" src="img/balloon1.png">
+									</td>
+									<!-- Balloon level selector tab -->
+									<td>
+										<select id="Balloon_level">
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+											<option>6</option>
+											<option>7</option>
+										</select>
+									</td>
+									<!-- Balloons elixir costs image -->
+									<td>
+										<img id="Balloon_elixirImage" src="img/dropElixir.png">
+									</td>
+									<!-- Balloons elixir costs number output -->
+									<td class="elixir">
+										<span id="Balloon_elixirCost" tabindex="-1">0</span>
+									</td>
+
+								<!-- Wizard -->
+									<td rowspan="2">
+										<img id="Wizard_image" src="img/wizard1.png">
+									</td>
+									<!-- Wizard level selector tab -->
+									<td>
+										<select id="Wizard_level">
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+											<option>6</option>
+											<option>7</option>
+										</select>
+									</td>
+									<!-- Wizards elixir costs image -->
+									<td>
+										<img id="Wizard_elixirImage" src="img/dropElixir.png">
+									</td>
+									<!-- Wizards elixir costs number output -->
+									<td class="elixir">
+										<span id="Wizard_elixirCost" tabindex="-1">0</span>
+									</td>	
+
+								<!-- Healer -->
+									<td rowspan="2">
+										<img id="Healer_image" src="img/healer1.png">
+									</td>
+									<!-- Healer level selector tab -->
+									<td>
+										<select id="Healer_level">
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+											<option>6</option>
+											<option>7</option>
+										</select>
+									</td>
+									<!-- Healers elixir costs image -->
+									<td>
+										<img id="Healer_elixirImage" src="img/dropElixir.png">
+									</td>
+									<!-- Healers elixir costs number output -->
+									<td class="elixir">
+										<span id="Healer_elixirCost" tabindex="-1">0</span>
+									</td>		
+
+								<!-- Dragon -->
+									<td rowspan="2">
+										<img id="Dragon_image" src="img/dragon1.png">
+									</td>
+									<!-- Dragon level selector tab -->
+									<td>
+										<select id="Dragon_level">
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+											<option>6</option>
+											<option>7</option>
+										</select>
+									</td>
+									<!-- Dragons elixir costs image -->
+									<td>
+										<img id="Dragon_elixirImage" src="img/dropElixir.png">
+									</td>
+									<!-- Dragons elixir costs number output -->
+									<td class="elixir">
+										<span id="Dragon_elixirCost" tabindex="-1">0</span>
+									</td>	
+
+								<!-- Pekka -->
+									<td rowspan="2">
+										<img id="Pekka_image" src="img/pekka1.png">
+									</td>
+									<!-- Pekka level selector tab -->
+									<td>
+										<select id="Pekka_level">
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+											<option>6</option>
+											<option>7</option>
+										</select>
+									</td>
+									<!-- Pekkas elixir costs image -->
+									<td>
+										<img id="Pekka_elixirImage" src="img/dropElixir.png">
+									</td>
+									<!-- Pekkas elixir costs number output -->
+									<td class="elixir">
+										<span id="Pekka_elixirCost" tabindex="-1">0</span>
+									</td>				
+								</tr>
+
+							<!-- Regular Troops part 2b -->
+								<tr>
+								<!-- Balloon -->
+									<!-- input number for amount of Balloon troops -->
+									<td>
+										<input type="number" class="quantity" id="Balloon_quantity">
+									</td>
+									<!-- Balloons clock image for training time number -->
+									<td class="clock_image">
+										<img src="img/clock.png">
+									</td>
+									<td class="time">
+										<span id="Balloon_trainingTime" tabindex="-1">00:00:00</span>
+									</td>	
+
+								<!-- Wizard -->
+									<!-- input number for amount of Wizard troops -->
+									<td>
+										<input type="number" class="quantity" id="Wizard_quantity">
+									</td>
+									<!-- Wizards clock image for training time number -->
+									<td class="clock_image">
+										<img src="img/clock.png">
+									</td>
+									<td class="time">
+										<span id="Wizard_trainingTime" tabindex="-1">00:00:00</span>
+									</td>		
+
+								<!-- Healer -->
+									<!-- input number for amount of Healer troops -->
+									<td>
+										<input type="number" class="quantity" id="Healer_quantity">
+									</td>
+									<!-- Healers clock image for training time number -->
+									<td class="clock_image">
+										<img src="img/clock.png">
+									</td>
+									<td class="time">
+										<span id="Healer_trainingTime" tabindex="-1">00:00:00</span>
+									</td>	
+
+								<!-- Dragon -->
+									<!-- input number for amount of Dragon troops -->
+									<td>
+										<input type="number" class="quantity" id="Dragon_quantity">
+									</td>
+									<!-- Dragons clock image for training time number -->
+									<td class="clock_image">
+										<img src="img/clock.png">
+									</td>
+									<td class="time">
+										<span id="Dragon_trainingTime" tabindex="-1">00:00:00</span>
+									</td>		
+
+								<!-- Pekka -->
+									<!-- input number for amount of Pekka troops -->
+									<td>
+										<input type="number" class="quantity" id="Pekka_quantity">
+									</td>
+									<!-- Pekkas clock image for training time number -->
+									<td class="clock_image">
+										<img src="img/clock.png">
+									</td>
+									<td class="time">
+										<span id="Pekka_trainingTime" tabindex="-1">00:00:00</span>
+									</td>					
+
+								</tr>
+
+
+							</tbody>
+						</table>
+					</td>
+				</tr>
+
+			</tbody>
+		</table>
+	<script type="text/javascript" src="js/jQuery-v1.11.1.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+	</body>
+
+</html>
