@@ -1,0 +1,56 @@
+/*main2.css stylesheet*/
+
+.sectionHeader {
+	width: 975px;
+	color: white;
+	background-image: url(../img/header_2.GIF);
+}
+
+
+#Barbarian_level, #Archer_level, #Goblin_level, #Giant_level, #Wall_Breaker_level {
+	/*margin-bottom: 34px;*/
+}
+
+#Barbarian_elixirImage, #Archer_elixirImage, #Goblin_elixirImage, #Giant_elixirImage, 
+#Wall_Breaker_elixirImage, #Balloon_elixirImage, #Wizard_elixirImage, #Healer_elixirImage, 
+#Dragon_elixirImage, #Pekka_elixirImage {
+	margin-top: 5px;
+}
+
+.elixir {
+	width: 75px;
+	text-align: right;
+	/*padding-bottom: 33px;*/
+}
+
+.section {
+	background-image: url(../img/background.png);
+}
+
+#Barbarian_quantity, #Archer_quantity, #Goblin_quantity, #Giant_quantity, 
+#Wall_Breaker_quantity, #Balloon_quantity, #Wizard_quantity, #Healer_quantity, #Dragon_quantity, 
+#Pekka_quantity {
+	width: 32px;
+}
+
+.quantity {
+	margin-bottom: 6px;
+}
+
+.time {
+	padding-bottom: 6px;
+	text-align: right;
+}
+
+.clock_image {
+	padding-bottom: 5px;
+}
+
+.dataTable {
+	border: 2px solid black;
+}
+
+
+
+
+
