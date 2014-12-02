@@ -4,6 +4,7 @@ var main = function(){
 
 	Set_Barbarian_Values();
 	Set_Archer_Values();
+	Set_Goblin_Values();
 }
 
 $(document).ready(main);

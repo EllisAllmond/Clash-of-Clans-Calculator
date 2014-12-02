@@ -77,7 +77,7 @@
 									</td>
 									<!-- Goblin level selector tab -->
 									<td>
-										<select id="Goblin_level">
+										<select id="Goblin_level" onchange="Set_Goblin_Values();">
 											<option>1</option>
 											<option>2</option>
 											<option>3</option>
@@ -175,7 +175,7 @@
 								<!-- Goblin -->
 									<!-- input number for amount of Goblin troops -->
 									<td>
-										<input type="number" class="quantity" id="Goblin_quantity">
+										<input type="number" class="quantity" id="Goblin_quantity" onchange="Set_Goblin_Values();">
 									</td>
 									<!-- Goblins clock image for training time number -->
 									<td class="clock_image">
@@ -421,6 +421,7 @@
 	<script type="text/javascript" src="js/main.js"></script>
 	<script type="text/javascript" src="js/Barbarian-Calculations.js"></script>
 	<script type="text/javascript" src="js/Archer-Calculations.js"></script>
+	<script type="text/javascript" src="js/Goblin-Calculations.js"></script>
 	</body>
 
 </html>
