@@ -150,4 +150,4 @@ var set_barb_lvl = function(){
 	}
 }
 
-$(document).ready(Set_Barbarian_Values);
+// $(document).ready(Set_Barbarian_Values);

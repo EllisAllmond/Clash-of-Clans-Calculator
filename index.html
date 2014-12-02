@@ -52,7 +52,7 @@
 									</td>
 									<!-- Archer level selector tab -->
 									<td>
-										<select id="Archer_level">
+										<select id="Archer_level" onchange="Set_Archer_Values();">
 											<option>1</option>
 											<option>2</option>
 											<option>3</option>
@@ -149,7 +149,6 @@
 								<!-- Barbarian -->
 									<!-- input number for amount of Barbarian troops -->
 									<td>
-										<!-- <input type="number" class="quantity" id="Barbarian_quantity" onchange="calculate_barb_cost(); calculate_barb_training_time();"> -->
 										<input type="number" class="quantity" id="Barbarian_quantity" onchange="Set_Barbarian_Values();">
 									</td>
 									<!-- Barbarians clock image for training time number -->
@@ -163,7 +162,7 @@
 								<!-- Archer -->
 									<!-- input number for amount of Archer troops -->
 									<td>
-										<input type="number" class="quantity" id="Archer_quantity">
+										<input type="number" class="quantity" id="Archer_quantity" onchange="Set_Archer_Values();">
 									</td>
 									<!-- Archers clock image for training time number -->
 									<td class="clock_image">
@@ -421,6 +420,10 @@
 	<script type="text/javascript" src="js/jQuery-v1.11.1.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 	<script type="text/javascript" src="js/Barbarian-Calculations.js"></script>
+	<script type="text/javascript" src="js/Archer-Calculations.js"></script>
 	</body>
 
 </html>
+
+
+
