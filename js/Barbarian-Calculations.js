@@ -12,15 +12,15 @@ var calculate_barb_training_time = function(){
 	////barbarian training time per
 	var time_per = 20;
 	////number of barbarians user has inputed 
-	var $barb_quantity = $('#Barbarian_quantity').val();
+	var $quantity = $('#Barbarian_quantity').val();
 	
 	///////////
 	//calculate the secs
 	var seconds = '00';
 	////barb training time total secs equals training time per multiplied by amount user inputs
-	var total_secs = time_per * $barb_quantity;
+	var total_secs = time_per * $quantity;
 	//if barbarian training time in total secs - total secs rounded down does not equal zero AND is not lower than 0
-	if(  ( total_secs -= (Math.floor(total_secs/60)*60)  ) != 0 && $barb_quantity > 0  ){
+	if(  ( total_secs -= (Math.floor(total_secs/60)*60)  ) != 0 && $quantity > 0  ){
 		//seconds = total secs - total secs rounded down
 		seconds = ( total_secs -= (Math.floor(total_secs/60)*60)  );		
 	}
@@ -33,7 +33,7 @@ var calculate_barb_training_time = function(){
 	//need to calculate hours before minutes for displaying minutes above 59
 	var hours = '00';
 	////barbarian training time in total seconds for hours variable
-	var hours_total_secs = time_per * $barb_quantity;
+	var hours_total_secs = time_per * $quantity;
 	//IF hours is less than 10 we want to put a 0 in front of our number
 	//ELSE IF hours is greater than 9 we dont want a 0 in front of our number
 	//ELSE hours equals 0 so we want 00 diplayed
@@ -51,7 +51,7 @@ var calculate_barb_training_time = function(){
 	//calculate the minutes
 	var minutes = '00';
 	////barbarian training time in total seconds for minutes variable
-	var min_total_secs = time_per * $barb_quantity;
+	var min_total_secs = time_per * $quantity;
 	//IF total seconds is less than or equal to 0 display 00
 	//ELSE IF total minutes is less than 10 display a 0 in front of minutes number
 	//ELSE IF total minutes is less than 60 just display minutes number
@@ -79,48 +79,74 @@ var calculate_barb_training_time = function(){
 	$('#Barbarian_trainingTime').text(hours + ':' + minutes + ':' + seconds);
 }
 
+/////function to add commas to our elixir cost number
+function commaNumber(val){
+    while (/(\d+)(\d{3})/.test(val.toString())){
+      val = val.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
+    }
+    return val;
+}
+
 var calculate_barb_cost = function(){
-	var $barb_amount = $('#Barbarian_quantity').val();
-	var $barb_level = $('#Barbarian_level').val();
-	if($barb_amount > 0){
-		if($barb_level == "1"){
-			var barb_cost_per = 25;
-			var barb_cost_total = $barb_amount * barb_cost_per;
-			$('#Barbarian_elixirCost').text(barb_cost_total);
+	////barbarian_amount number of barbs inputed by user
+	var $amount = $('#Barbarian_quantity').val();
+	////barbarian_level selected by user
+	var $level = $('#Barbarian_level').val();
+	////barbarians elixer cost display element
+	var $elixir_cost = $('#Barbarian_elixirCost');
+	////archer cost per unit
+	var cost_per;
+	////archers cost total which is the amount multiplied by cost per unit
+	var cost_total;
+	////total_with_commas takes cost_total and adds the commas for thousands, millions, etc.
+	var total_with_commas;
+
+	if($amount > 0){
+		if($level == "1"){
+			cost_per = 25;
+			cost_total = $amount * cost_per;
+			total_with_commas = commaNumber(cost_total);
+			$elixir_cost.text(total_with_commas);
 		}
-		else if($barb_level == "2"){
-			var barb_cost_per = 40;
-			var barb_cost_total = $barb_amount * barb_cost_per;
-			$('#Barbarian_elixirCost').text(barb_cost_total);
+		else if($level == "2"){
+			cost_per = 40;
+			cost_total = $amount * cost_per;
+			total_with_commas = commaNumber(cost_total);
+			$elixir_cost.text(total_with_commas);
 		}
-		else if($barb_level == "3"){
-			var barb_cost_per = 60;
-			var barb_cost_total = $barb_amount * barb_cost_per;
-			$('#Barbarian_elixirCost').text(barb_cost_total);
+		else if($level == "3"){
+			cost_per = 60;
+			cost_total = $amount * cost_per;
+			total_with_commas = commaNumber(cost_total);
+			$elixir_cost.text(total_with_commas);
 		}
-		else if($barb_level == "4"){
-			var barb_cost_per = 80;
-			var barb_cost_total = $barb_amount * barb_cost_per;
-			$('#Barbarian_elixirCost').text(barb_cost_total);
+		else if($level == "4"){
+			cost_per = 80;
+			cost_total = $amount * cost_per;
+			total_with_commas = commaNumber(cost_total);
+			$elixir_cost.text(total_with_commas);
 		}
-		else if($barb_level == "5"){
-			var barb_cost_per = 100;
-			var barb_cost_total = $barb_amount * barb_cost_per;
-			$('#Barbarian_elixirCost').text(barb_cost_total);
+		else if($level == "5"){
+			cost_per = 100;
+			cost_total = $amount * cost_per;
+			total_with_commas = commaNumber(cost_total);
+			$elixir_cost.text(total_with_commas);
 		}
-		else if($barb_level == "6"){
-			var barb_cost_per = 150;
-			var barb_cost_total = $barb_amount * barb_cost_per;
-			$('#Barbarian_elixirCost').text(barb_cost_total);
+		else if($level == "6"){
+			cost_per = 150;
+			cost_total = $amount * cost_per;
+			total_with_commas = commaNumber(cost_total);
+			$elixir_cost.text(total_with_commas);
 		}
-		else if($barb_level == "7"){
-			var barb_cost_per = 200;
-			var barb_cost_total = $barb_amount * barb_cost_per;
-			$('#Barbarian_elixirCost').text(barb_cost_total);
+		else if($level == "7"){
+			cost_per = 200;
+			cost_total = $amount * cost_per;
+			total_with_commas = commaNumber(cost_total);
+			$elixir_cost.text(total_with_commas);
 		}
 	}
 	else{
-		$('#Barbarian_elixirCost').text('0');
+		$elixir_cost.text('0');
 	}
 }
 

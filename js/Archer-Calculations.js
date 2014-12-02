@@ -83,56 +83,73 @@ var calculate_archer_training_time = function(){
 	$('#Archer_trainingTime').text(hours + ':' + minutes + ':' + seconds);
 }
 
+/////function to add commas to our elixir cost number
+function commaNumber(val){
+    while (/(\d+)(\d{3})/.test(val.toString())){
+      val = val.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
+    }
+    return val;
+}
+
 var calculate_archer_cost = function(){
 	/////archer_amount
 	var $amount = $('#Archer_quantity').val();
 	/////archer_level
 	var $level = $('#Archer_level').val();
 	////archers elixer cost display element
-	var $elixer_cost = $('#Archer_elixirCost');
+	var $elixir_cost = $('#Archer_elixirCost');
 	////archer cost per unit
 	var cost_per;
 	////archers cost total which is the amount multiplied by cost per unit
 	var cost_total;
+	////total_with_commas takes cost_total and adds the commas for thousands, millions, etc.
+	var total_with_commas;
 	if($amount > 0){
 		if($level == "1"){
 			cost_per = 50;
 			cost_total = $amount * cost_per;
-			$elixer_cost.text(cost_total);
+			total_with_commas = commaNumber(cost_total);
+			$elixir_cost.text(total_with_commas);
 		}
 		else if($level == "2"){
 			cost_per = 80;
 			cost_total = $amount * cost_per;
-			$elixer_cost.text(cost_total);
+			total_with_commas = commaNumber(cost_total);
+			$elixir_cost.text(total_with_commas);
 		}
 		else if($level == "3"){
 			cost_per = 120;
 			cost_total = $amount * cost_per;
-			$elixer_cost.text(cost_total);
+			total_with_commas = commaNumber(cost_total);
+			$elixir_cost.text(total_with_commas);
 		}
 		else if($level == "4"){
 			cost_per = 160;
 			cost_total = $amount * cost_per;
-			$elixer_cost.text(cost_total);
+			total_with_commas = commaNumber(cost_total);
+			$elixir_cost.text(total_with_commas);
 		}
 		else if($level == "5"){
 			cost_per = 200;
 			cost_total = $amount * cost_per;
-			$elixer_cost.text(cost_total);
+			total_with_commas = commaNumber(cost_total);
+			$elixir_cost.text(total_with_commas);
 		}
 		else if($level == "6"){
 			cost_per = 300;
 			cost_total = $amount * cost_per;
-			$elixer_cost.text(cost_total);
+			total_with_commas = commaNumber(cost_total);
+			$elixir_cost.text(total_with_commas);
 		}
 		else if($level == "7"){
 			cost_per = 400;
 			cost_total = $amount * cost_per;
-			$elixer_cost.text(cost_total);
+			total_with_commas = commaNumber(cost_total);
+			$elixir_cost.text(total_with_commas);
 		}
 	}
 	else{
-		$elixer_cost.text('0');
+		$elixir_cost.text('0');
 	}
 }
 
