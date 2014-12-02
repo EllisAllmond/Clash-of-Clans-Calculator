@@ -12,19 +12,19 @@ var calculate_archer_training_time = function(){
 	////archer training time per
 	var time_per = 25;
 	////number of archers user has inputed 
-	var $archer_quantity = $('#Archer_quantity').val();
+	var $quantity = $('#Archer_quantity').val();
 	
 	///////////
 	//calculate the secs
 	var seconds = '00';
 	////Archer training time total secs equals training time per multiplied by amount user inputs
-	var total_secs = time_per * $archer_quantity;
+	var total_secs = time_per * $quantity;
 	//if archer training time in total secs - total secs rounded down does not equal zero AND is not lower than 0
-	if(  (total_secs -= (Math.floor(total_secs/60)*60)) != 0 && ($archer_quantity > 0)  && (total_secs -= (Math.floor(total_secs/60)*60)) < 10  ){
+	if(  (total_secs -= (Math.floor(total_secs/60)*60)) != 0 && ($quantity > 0)  && (total_secs -= (Math.floor(total_secs/60)*60)) < 10  ){
 		//seconds = total secs - total secs rounded down
 		seconds = '0' + ( total_secs -= (Math.floor(total_secs/60)*60)  );		
 	}
-	else if(  (total_secs -= (Math.floor(total_secs/60)*60)) != 0 && ($archer_quantity > 0)  ){
+	else if(  (total_secs -= (Math.floor(total_secs/60)*60)) != 0 && ($quantity > 0)  ){
 		//seconds = total secs - total secs rounded down
 		seconds = (  total_secs -= (Math.floor(total_secs/60)*60)  );		
 	}
@@ -37,7 +37,7 @@ var calculate_archer_training_time = function(){
 	//need to calculate hours before minutes for displaying minutes above 59
 	var hours = '00';
 	////archer training time in total seconds for hours variable
-	var hours_total_secs = time_per * $archer_quantity;
+	var hours_total_secs = time_per * $quantity;
 	//IF hours is less than 10 we want to put a 0 in front of our number
 	//ELSE IF hours is greater than 9 we dont want a 0 in front of our number
 	//ELSE hours equals 0 so we want 00 diplayed
@@ -55,7 +55,7 @@ var calculate_archer_training_time = function(){
 	//calculate the minutes
 	var minutes = '00';
 	////archer training time in total seconds for minutes variable
-	var min_total_secs = time_per * $archer_quantity;
+	var min_total_secs = time_per * $quantity;
 	//IF total seconds is less than or equal to 0 display 00
 	//ELSE IF total minutes is less than 10 display a 0 in front of minutes number
 	//ELSE IF total minutes is less than 60 just display minutes number
@@ -84,72 +84,83 @@ var calculate_archer_training_time = function(){
 }
 
 var calculate_archer_cost = function(){
-	var $archer_amount = $('#Archer_quantity').val();
-	var $archer_level = $('#Archer_level').val();
-	if($archer_amount > 0){
-		if($archer_level == "1"){
-			var archer_cost_per = 50;
-			var archer_cost_total = $archer_amount * archer_cost_per;
-			$('#Archer_elixirCost').text(archer_cost_total);
+	/////archer_amount
+	var $amount = $('#Archer_quantity').val();
+	/////archer_level
+	var $level = $('#Archer_level').val();
+	////archers elixer cost display element
+	var $elixer_cost = $('#Archer_elixirCost');
+	////archer cost per unit
+	var cost_per;
+	////archers cost total which is the amount multiplied by cost per unit
+	var cost_total;
+	if($amount > 0){
+		if($level == "1"){
+			cost_per = 50;
+			cost_total = $amount * cost_per;
+			$elixer_cost.text(cost_total);
 		}
-		else if($archer_level == "2"){
-			var archer_cost_per = 80;
-			var archer_cost_total = $archer_amount * archer_cost_per;
-			$('#Archer_elixirCost').text(archer_cost_total);
+		else if($level == "2"){
+			cost_per = 80;
+			cost_total = $amount * cost_per;
+			$elixer_cost.text(cost_total);
 		}
-		else if($archer_level == "3"){
-			var archer_cost_per = 120;
-			var archer_cost_total = $archer_amount * archer_cost_per;
-			$('#Archer_elixirCost').text(archer_cost_total);
+		else if($level == "3"){
+			cost_per = 120;
+			cost_total = $amount * cost_per;
+			$elixer_cost.text(cost_total);
 		}
-		else if($archer_level == "4"){
-			var archer_cost_per = 160;
-			var archer_cost_total = $archer_amount * archer_cost_per;
-			$('#Archer_elixirCost').text(archer_cost_total);
+		else if($level == "4"){
+			cost_per = 160;
+			cost_total = $amount * cost_per;
+			$elixer_cost.text(cost_total);
 		}
-		else if($archer_level == "5"){
-			var archer_cost_per = 200;
-			var archer_cost_total = $archer_amount * archer_cost_per;
-			$('#Archer_elixirCost').text(archer_cost_total);
+		else if($level == "5"){
+			cost_per = 200;
+			cost_total = $amount * cost_per;
+			$elixer_cost.text(cost_total);
 		}
-		else if($archer_level == "6"){
-			var archer_cost_per = 300;
-			var archer_cost_total = $archer_amount * archer_cost_per;
-			$('#Archer_elixirCost').text(archer_cost_total);
+		else if($level == "6"){
+			cost_per = 300;
+			cost_total = $amount * cost_per;
+			$elixer_cost.text(cost_total);
 		}
-		else if($archer_level == "7"){
-			var archer_cost_per = 400;
-			var archer_cost_total = $archer_amount * archer_cost_per;
-			$('#Archer_elixirCost').text(archer_cost_total);
+		else if($level == "7"){
+			cost_per = 400;
+			cost_total = $amount * cost_per;
+			$elixer_cost.text(cost_total);
 		}
 	}
 	else{
-		$('#Archer_elixirCost').text('0');
+		$elixer_cost.text('0');
 	}
 }
 
 var set_archer_lvl = function(){
-	var $archer_lvl = $('#Archer_level').val();
+	////archer_lvl
+	var $lvl = $('#Archer_level').val();
+	////archers image element
+	var $image = $('#Archer_image');
 
-	if( $archer_lvl == "1" ){
-		$('#Archer_image').attr('src', 'img/archer1.png');
+	if( $lvl == "1" ){
+		$image.attr('src', 'img/archer1.png');
 	}
-	else if( $archer_lvl == "2" ) {
-		$('#Archer_image').attr('src', 'img/archer2.png');
+	else if( $lvl == "2" ) {
+		$image.attr('src', 'img/archer2.png');
 	}
-	else if( $archer_lvl == "3" ) {
-		$('#Archer_image').attr('src', 'img/archer3.png');
+	else if( $lvl == "3" ) {
+		$image.attr('src', 'img/archer3.png');
 	}
-	else if( $archer_lvl == "4" ) {
-		$('#Archer_image').attr('src', 'img/archer4.png');
+	else if( $lvl == "4" ) {
+		$image.attr('src', 'img/archer4.png');
 	}
-	else if( $archer_lvl == "5" ) {
-		$('#Archer_image').attr('src', 'img/archer5.png');
+	else if( $lvl == "5" ) {
+		$image.attr('src', 'img/archer5.png');
 	}
-	else if( $archer_lvl == "6" ) {
-		$('#Archer_image').attr('src', 'img/archer6.png');
+	else if( $lvl == "6" ) {
+		$image.attr('src', 'img/archer6.png');
 	}
-	else if( $archer_lvl == "7" ) {
-		$('#Archer_image').attr('src', 'img/archer7.png');
+	else if( $lvl == "7" ) {
+		$image.attr('src', 'img/archer7.png');
 	}
 }
