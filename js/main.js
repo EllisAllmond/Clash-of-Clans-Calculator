@@ -9,60 +9,75 @@ var main = function(){
 }
 
 var calculate_barb_training_time = function(){
-	var barb_training_time_per = 20;
+
+	////barbarian training time per
+	var time_per = 20;
+	////number of barbarians user has inputed 
 	var $barb_quantity = $('#Barbarian_quantity').val();
-	var barb_training_time_total_secs = barb_training_time_per * $barb_quantity;
 	
+	///////////
 	//calculate the secs
 	var seconds = '00';
-	//if total secs - total secs rounded down does not equal zero 
-	if(  ( barb_training_time_total_secs -= (( Math.floor(barb_training_time_total_secs/60)*60))  ) != 0 && $barb_quantity > 0  ){
+	////barb training time total secs equals training time per multiplied by amount user inputs
+	var total_secs = time_per * $barb_quantity;
+	//if barbarian training time in total secs - total secs rounded down does not equal zero AND is not lower than 0
+	if(  ( total_secs -= (Math.floor(total_secs/60)*60)  ) != 0 && $barb_quantity > 0  ){
 		//seconds = total secs - total secs rounded down
-		seconds = ( barb_training_time_total_secs -=(( Math.floor(barb_training_time_total_secs/60)*60) )  );		
+		seconds = ( total_secs -= (Math.floor(total_secs/60)*60)  );		
 	}
 	//else seconds either equals 0 or seconds totals to minutes evenly so seconds are displayed as '00'
 	else{
 		seconds = '00';
 	}
 
+	///////////
 	//need to calculate hours before minutes for displaying minutes above 59
 	var hours = '00';
-	var barb3_training_time_per = 20;
-	var barb_training_time_total_secs_for_hours = barb3_training_time_per * $barb_quantity;
-	if(  ((barb_training_time_total_secs_for_hours/60)/60) >= 1 ){
-		hours = '0' + Math.floor( (barb_training_time_total_secs_for_hours/60)/60 )
+	////barbarian training time in total seconds for hours variable
+	var hours_total_secs = time_per * $barb_quantity;
+	//IF hours is less than 10 we want to put a 0 in front of our number
+	//ELSE IF hours is greater than 9 we dont want a 0 in front of our number
+	//ELSE hours equals 0 so we want 00 diplayed
+	if(  (((hours_total_secs/60)/60) <= 9) && (((hours_total_secs/60)/60) > 0)  ){
+		hours = '0' + Math.floor( (hours_total_secs/60)/60 )
+	}
+	else if(  ((hours_total_secs/60)/60) >= 10 ){
+		hours = Math.floor( (hours_total_secs/60)/60 )
 	}
 	else{
 		hours = '00';
 	}
 
+	////////////
 	//calculate the minutes
 	var minutes = '00';
-	var barb2_training_time_per = 20;
-	var barb_training_time_total_secs_for_min = barb2_training_time_per * $barb_quantity;
-
-	if(barb_training_time_total_secs_for_min <= 0){
+	////barbarian training time in total seconds for minutes variable
+	var min_total_secs = time_per * $barb_quantity;
+	//IF total seconds is less than or equal to 0 display 00
+	//ELSE IF total minutes is less than 10 display a 0 in front of minutes number
+	//ELSE IF total minutes is less than 60 just display minutes number
+	//ELSE IF minutes are more than 60 we need to minus total hours to get our minute and
+	//add a 0 if front if number is less than 10 
+	if(min_total_secs <= 0){
 		minutes = '00';
 	}
-	else if( Math.floor(barb_training_time_total_secs_for_min/60) < 10){
-		minutes = '0' + (Math.floor(barb_training_time_total_secs_for_min/60));
+	else if( Math.floor(min_total_secs/60) < 10){
+		minutes = '0' + (Math.floor(min_total_secs/60));
 	}
-	else if(Math.floor(barb_training_time_total_secs_for_min/60) < 60){
-		minutes = Math.floor(barb_training_time_total_secs_for_min/60);
+	else if(Math.floor(min_total_secs/60) < 60){
+		minutes = Math.floor(min_total_secs/60);
 	}
-	else if(Math.floor(barb_training_time_total_secs_for_min/60) >= 60){
-		minutes = (  ( Math.floor(barb_training_time_total_secs_for_min/60)) - (hours*60) );
+	else if(Math.floor(min_total_secs/60) >= 60){
+		minutes = (  ( Math.floor(min_total_secs/60)) - (hours*60) );
 		if(minutes < 10){
-			minutes = '0' + (  ( Math.floor(barb_training_time_total_secs_for_min/60)) - (hours*60) );
+			minutes = '0' + (  ( Math.floor(min_total_secs/60)) - (hours*60) );
 		}
 		else{
-			minutes = (  ( Math.floor(barb_training_time_total_secs_for_min/60)) - (hours*60) );
+			minutes = (  ( Math.floor(min_total_secs/60)) - (hours*60) );
 		}
 	}
 
-	// $('#Barbarian_trainingTime').text(barb_training_time_total);
 	$('#Barbarian_trainingTime').text(hours + ':' + minutes + ':' + seconds);
-	//$('#Barbarian_trainingTime').text(barb_training_time_total_secs_for_min);
 }
 
 var calculate_barb_cost = function(){
