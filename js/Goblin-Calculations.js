@@ -172,3 +172,8 @@ var set_goblin_lvl = function(){
 		$image.attr('src', 'img/goblin6.png');
 	}
 }
+
+function goblinHandleChange(input) {
+    if (input.value <= 0) input.value = 0;
+    if (input.value >= 240) input.value = 240;
+}

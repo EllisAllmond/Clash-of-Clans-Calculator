@@ -149,7 +149,7 @@
 								<!-- Barbarian -->
 									<!-- input number for amount of Barbarian troops -->
 									<td>
-										<input type="number" class="quantity" id="Barbarian_quantity" onchange="Set_Barbarian_Values(); totalTroopsSelected(); totalElixirCost();">
+										<input type="number" class="quantity" id="Barbarian_quantity" min="0" max="240" onchange="barbHandleChange(this); Set_Barbarian_Values(); totalTroopsSelected(); totalElixirCost();">
 									</td>
 									<!-- Barbarians clock image for training time number -->
 									<td class="clock_image">
@@ -162,7 +162,7 @@
 								<!-- Archer -->
 									<!-- input number for amount of Archer troops -->
 									<td>
-										<input type="number" class="quantity" id="Archer_quantity" onchange="Set_Archer_Values(); totalTroopsSelected(); totalElixirCost();">
+										<input type="number" class="quantity" id="Archer_quantity" onchange="archerHandleChange(this); Set_Archer_Values(); totalTroopsSelected(); totalElixirCost();">
 									</td>
 									<!-- Archers clock image for training time number -->
 									<td class="clock_image">
@@ -175,7 +175,7 @@
 								<!-- Goblin -->
 									<!-- input number for amount of Goblin troops -->
 									<td>
-										<input type="number" class="quantity" id="Goblin_quantity" onchange="Set_Goblin_Values(); totalTroopsSelected(); totalElixirCost();">
+										<input type="number" class="quantity" id="Goblin_quantity" onchange="goblinHandleChange(this); Set_Goblin_Values(); totalTroopsSelected(); totalElixirCost();">
 									</td>
 									<!-- Goblins clock image for training time number -->
 									<td class="clock_image">

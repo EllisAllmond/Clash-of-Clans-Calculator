@@ -176,4 +176,14 @@ var set_barb_lvl = function(){
 	}
 }
 
-// $(document).ready(Set_Barbarian_Values);
+function barbHandleChange(input) {
+    if (input.value <= 0) input.value = 0;
+    if (input.value >= 240) input.value = 240;
+}
+
+
+
+
+
+
+

@@ -181,3 +181,11 @@ var set_archer_lvl = function(){
 		$image.attr('src', 'img/archer7.png');
 	}
 }
+
+function archerHandleChange(input) {
+    if (input.value <= 0) input.value = 0;
+    if (input.value >= 240) input.value = 240;
+}
+
+
+
