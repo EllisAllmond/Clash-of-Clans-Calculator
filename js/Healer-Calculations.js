@@ -1,25 +1,25 @@
-//////Goblin Calculations
+//////Healer Calculations
 
-var Set_Goblin_Values = function(){
+var Set_Healer_Values = function(){
 
-	set_goblin_lvl();
-	calculate_goblin_cost();
-	calculate_goblin_training_time();
+	set_healer_lvl();
+	calculate_healer_cost();
+	calculate_healer_training_time();
 }
 
-var calculate_goblin_training_time = function(){
+var calculate_healer_training_time = function(){
 
-	////goblin training time per in seconds
-	var time_per = 30;
-	////number of goblins user has inputed 
-	var $quantity = $('#Goblin_quantity').val();
+	////healer training time per in seconds
+	var time_per = 900;
+	////number of healer user has inputed 
+	var $quantity = $('#Healer_quantity').val();
 	
 	///////////
 	//calculate the secs
 	var seconds = '00';
-	////goblin training time total secs equals training time per multiplied by amount user inputs
+	////healer training time total secs equals training time per multiplied by amount user inputs
 	var total_secs = time_per * $quantity;
-	//if goblin training time in total secs - total secs rounded down does not equal zero AND is not lower than 0
+	//if healer training time in total secs - total secs rounded down does not equal zero AND is not lower than 0
 	if(  (total_secs -= (Math.floor(total_secs/60)*60)) != 0 && ($quantity > 0)  && (total_secs -= (Math.floor(total_secs/60)*60)) < 10  ){
 		//seconds = total secs - total secs rounded down
 		seconds = '0' + ( total_secs -= (Math.floor(total_secs/60)*60)  );		
@@ -36,7 +36,7 @@ var calculate_goblin_training_time = function(){
 	///////////
 	//need to calculate hours before minutes for displaying minutes above 59
 	var hours = '00';
-	////goblin training time in total seconds for hours variable
+	////healer training time in total seconds for hours variable
 	var hours_total_secs = time_per * $quantity;
 	//IF hours is less than 10 we want to put a 0 in front of our number
 	//ELSE IF hours is greater than 9 we dont want a 0 in front of our number
@@ -54,7 +54,7 @@ var calculate_goblin_training_time = function(){
 	////////////
 	//calculate the minutes
 	var minutes = '00';
-	////goblin training time in total seconds for minutes variable
+	////healer training time in total seconds for minutes variable
 	var min_total_secs = time_per * $quantity;
 	//IF total seconds is less than or equal to 0 display 00
 	//ELSE IF total minutes is less than 10 display a 0 in front of minutes number
@@ -80,7 +80,7 @@ var calculate_goblin_training_time = function(){
 		}
 	}
 
-	$('#Goblin_trainingTime').text(hours + ':' + minutes + ':' + seconds);
+	$('#Healer_trainingTime').text(hours + ':' + minutes + ':' + seconds);
 }
 
 /////function to add commas to our elixir cost number
@@ -91,52 +91,40 @@ function commaNumber(val){
     return val;
 }
 
-var calculate_goblin_cost = function(){
-	/////goblin_amount
-	var $amount = $('#Goblin_quantity').val();
-	/////goblin_level
-	var $level = $('#Goblin_level').val();
-	////goblins elixer cost display element
-	var $elixir_cost = $('#Goblin_elixirCost');
-	////goblin cost per unit
+var calculate_healer_cost = function(){
+	/////healer_amount
+	var $amount = $('#Healer_quantity').val();
+	/////healer_level
+	var $level = $('#Healer_level').val();
+	////healers elixer cost display element
+	var $elixir_cost = $('#Healer_elixirCost');
+	////healer cost per unit
 	var cost_per;
-	////goblins cost total which is the amount multiplied by cost per unit
+	////healers cost total which is the amount multiplied by cost per unit
 	var cost_total;
 	////total_with_commas takes cost_total and adds the commas for thousands, millions, etc.
 	var total_with_commas;
 	if($amount > 0){
 		if($level == "1"){
-			cost_per = 25;
+			cost_per = 5000;
 			cost_total = $amount * cost_per;
 			total_with_commas = commaNumber(cost_total);
 			$elixir_cost.text(total_with_commas);
 		}
 		else if($level == "2"){
-			cost_per = 40;
+			cost_per = 6000;
 			cost_total = $amount * cost_per;
 			total_with_commas = commaNumber(cost_total);
 			$elixir_cost.text(total_with_commas);
 		}
 		else if($level == "3"){
-			cost_per = 60;
+			cost_per = 8000;
 			cost_total = $amount * cost_per;
 			total_with_commas = commaNumber(cost_total);
 			$elixir_cost.text(total_with_commas);
 		}
 		else if($level == "4"){
-			cost_per = 80;
-			cost_total = $amount * cost_per;
-			total_with_commas = commaNumber(cost_total);
-			$elixir_cost.text(total_with_commas);
-		}
-		else if($level == "5"){
-			cost_per = 100;
-			cost_total = $amount * cost_per;
-			total_with_commas = commaNumber(cost_total);
-			$elixir_cost.text(total_with_commas);
-		}
-		else if($level == "6"){
-			cost_per = 150;
+			cost_per = 10000;
 			cost_total = $amount * cost_per;
 			total_with_commas = commaNumber(cost_total);
 			$elixir_cost.text(total_with_commas);
@@ -147,33 +135,27 @@ var calculate_goblin_cost = function(){
 	}
 }
 
-var set_goblin_lvl = function(){
-	////goblin_lvl
-	var $lvl = $('#Goblin_level').val();
-	////goblins image element
-	var $image = $('#Goblin_image');
+var set_healer_lvl = function(){
+	////healer_lvl
+	var $lvl = $('#Healer_level').val();
+	////healers image element
+	var $image = $('#Healer_image');
 
 	if( $lvl == "1" ){
-		$image.attr('src', 'img/goblin1.png');
+		$image.attr('src', 'img/healer1.png');
 	}
 	else if( $lvl == "2" ) {
-		$image.attr('src', 'img/goblin2.png');
+		$image.attr('src', 'img/healer2.png');
 	}
 	else if( $lvl == "3" ) {
-		$image.attr('src', 'img/goblin3.png');
+		$image.attr('src', 'img/healer3.png');
 	}
 	else if( $lvl == "4" ) {
-		$image.attr('src', 'img/goblin4.png');
-	}
-	else if( $lvl == "5" ) {
-		$image.attr('src', 'img/goblin5.png');
-	}
-	else if( $lvl == "6" ) {
-		$image.attr('src', 'img/goblin6.png');
+		$image.attr('src', 'img/healer4.png');
 	}
 }
 
-function goblinHandleChange(input) {
+function healerHandleChange(input) {
     if (input.value <= 0) input.value = 0;
-    if (input.value >= 240) input.value = 240;
+    if (input.value >= 17) input.value = 17;
 }

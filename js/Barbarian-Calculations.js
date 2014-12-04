@@ -9,7 +9,7 @@ var Set_Barbarian_Values = function(){
 
 var calculate_barb_training_time = function(){
 
-	////barbarian training time per
+	////barbarian training time per in seconds
 	var time_per = 20;
 	////number of barbarians user has inputed 
 	var $quantity = $('#Barbarian_quantity').val();

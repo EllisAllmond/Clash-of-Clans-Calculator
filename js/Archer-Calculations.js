@@ -9,7 +9,7 @@ var Set_Archer_Values = function(){
 
 var calculate_archer_training_time = function(){
 
-	////archer training time per
+	////archer training time per in seconds
 	var time_per = 25;
 	////number of archers user has inputed 
 	var $quantity = $('#Archer_quantity').val();

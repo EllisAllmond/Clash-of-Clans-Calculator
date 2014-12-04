@@ -101,7 +101,7 @@
 									</td>
 									<!-- Giant level selector tab -->
 									<td>
-										<select id="Giant_level">
+										<select id="Giant_level" onchange="Set_Giant_Values(); totalTroopsSelected(); totalElixirCost();">
 											<option>1</option>
 											<option>2</option>
 											<option>3</option>
@@ -125,7 +125,7 @@
 									</td>
 									<!-- Wall_Breaker level selector tab -->
 									<td>
-										<select id="Wall_Breaker_level">
+										<select id="Wall_Breaker_level" onchange="Set_Wall_Breaker_Values(); totalTroopsSelected(); totalElixirCost();">
 											<option>1</option>
 											<option>2</option>
 											<option>3</option>
@@ -188,7 +188,7 @@
 								<!-- Giant -->
 									<!-- input number for amount of Giant troops -->
 									<td>
-										<input type="number" class="quantity" id="Giant_quantity">
+										<input type="number" class="quantity" id="Giant_quantity" onchange="giantHandleChange(this); Set_Giant_Values(); totalTroopsSelected(); totalElixirCost();">
 									</td>
 									<!-- Giants clock image for training time number -->
 									<td class="clock_image">
@@ -201,7 +201,7 @@
 								<!-- Wall_Breaker -->
 									<!-- input number for amount of Wall_Breaker troops -->
 									<td>
-										<input type="number" class="quantity" id="Wall_Breaker_quantity">
+										<input type="number" class="quantity" id="Wall_Breaker_quantity" onchange="wallBreakerHandleChange(this); Set_Wall_Breaker_Values(); totalTroopsSelected(); totalElixirCost();">
 									</td>
 									<!-- Wall_Breakers clock image for training time number -->
 									<td class="clock_image">
@@ -220,14 +220,13 @@
 									</td>
 									<!-- Balloon level selector tab -->
 									<td>
-										<select id="Balloon_level">
+										<select id="Balloon_level" onchange="Set_Balloon_Values(); totalTroopsSelected(); totalElixirCost();">
 											<option>1</option>
 											<option>2</option>
 											<option>3</option>
 											<option>4</option>
 											<option>5</option>
 											<option>6</option>
-											<option>7</option>
 										</select>
 									</td>
 									<!-- Balloons elixir costs image -->
@@ -245,14 +244,13 @@
 									</td>
 									<!-- Wizard level selector tab -->
 									<td>
-										<select id="Wizard_level">
+										<select id="Wizard_level" onchange="Set_Wizard_Values(); totalTroopsSelected(); totalElixirCost();">
 											<option>1</option>
 											<option>2</option>
 											<option>3</option>
 											<option>4</option>
 											<option>5</option>
 											<option>6</option>
-											<option>7</option>
 										</select>
 									</td>
 									<!-- Wizards elixir costs image -->
@@ -270,14 +268,11 @@
 									</td>
 									<!-- Healer level selector tab -->
 									<td>
-										<select id="Healer_level">
+										<select id="Healer_level" onchange="Set_Healer_Values(); totalTroopsSelected(); totalElixirCost();">
 											<option>1</option>
 											<option>2</option>
 											<option>3</option>
 											<option>4</option>
-											<option>5</option>
-											<option>6</option>
-											<option>7</option>
 										</select>
 									</td>
 									<!-- Healers elixir costs image -->
@@ -295,14 +290,11 @@
 									</td>
 									<!-- Dragon level selector tab -->
 									<td>
-										<select id="Dragon_level">
+										<select id="Dragon_level" onchange="Set_Dragon_Values(); totalTroopsSelected(); totalElixirCost();">
 											<option>1</option>
 											<option>2</option>
 											<option>3</option>
 											<option>4</option>
-											<option>5</option>
-											<option>6</option>
-											<option>7</option>
 										</select>
 									</td>
 									<!-- Dragons elixir costs image -->
@@ -320,14 +312,12 @@
 									</td>
 									<!-- Pekka level selector tab -->
 									<td>
-										<select id="Pekka_level">
+										<select id="Pekka_level" onchange="Set_Pekka_Values(); totalTroopsSelected(); totalElixirCost();">
 											<option>1</option>
 											<option>2</option>
 											<option>3</option>
 											<option>4</option>
 											<option>5</option>
-											<option>6</option>
-											<option>7</option>
 										</select>
 									</td>
 									<!-- Pekkas elixir costs image -->
@@ -345,7 +335,7 @@
 								<!-- Balloon -->
 									<!-- input number for amount of Balloon troops -->
 									<td>
-										<input type="number" class="quantity" id="Balloon_quantity">
+										<input type="number" class="quantity" id="Balloon_quantity" onchange="balloonHandleChange(this); Set_Balloon_Values(); totalTroopsSelected(); totalElixirCost();">
 									</td>
 									<!-- Balloons clock image for training time number -->
 									<td class="clock_image">
@@ -358,7 +348,7 @@
 								<!-- Wizard -->
 									<!-- input number for amount of Wizard troops -->
 									<td>
-										<input type="number" class="quantity" id="Wizard_quantity">
+										<input type="number" class="quantity" id="Wizard_quantity" onchange="wizardHandleChange(this); Set_Wizard_Values(); totalTroopsSelected(); totalElixirCost();">
 									</td>
 									<!-- Wizards clock image for training time number -->
 									<td class="clock_image">
@@ -371,7 +361,7 @@
 								<!-- Healer -->
 									<!-- input number for amount of Healer troops -->
 									<td>
-										<input type="number" class="quantity" id="Healer_quantity">
+										<input type="number" class="quantity" id="Healer_quantity" onchange="healerHandleChange(this); Set_Healer_Values(); totalTroopsSelected(); totalElixirCost();">
 									</td>
 									<!-- Healers clock image for training time number -->
 									<td class="clock_image">
@@ -384,7 +374,7 @@
 								<!-- Dragon -->
 									<!-- input number for amount of Dragon troops -->
 									<td>
-										<input type="number" class="quantity" id="Dragon_quantity">
+										<input type="number" class="quantity" id="Dragon_quantity" onchange="dragonHandleChange(this); Set_Dragon_Values(); totalTroopsSelected(); totalElixirCost();">
 									</td>
 									<!-- Dragons clock image for training time number -->
 									<td class="clock_image">
@@ -397,7 +387,7 @@
 								<!-- Pekka -->
 									<!-- input number for amount of Pekka troops -->
 									<td>
-										<input type="number" class="quantity" id="Pekka_quantity">
+										<input type="number" class="quantity" id="Pekka_quantity" onchange="pekkaHandleChange(this); Set_Pekka_Values(); totalTroopsSelected(); totalElixirCost();">
 									</td>
 									<!-- Pekkas clock image for training time number -->
 									<td class="clock_image">
@@ -444,6 +434,13 @@
 	<script type="text/javascript" src="js/Barbarian-Calculations.js"></script>
 	<script type="text/javascript" src="js/Archer-Calculations.js"></script>
 	<script type="text/javascript" src="js/Goblin-Calculations.js"></script>
+	<script type="text/javascript" src="js/Giant-Calculations.js"></script>
+	<script type="text/javascript" src="js/Wall-Breaker-Calculations.js"></script>
+	<script type="text/javascript" src="js/Balloon-Calculations.js"></script>
+	<script type="text/javascript" src="js/Wizard-Calculations.js"></script>
+	<script type="text/javascript" src="js/Healer-Calculations.js"></script>
+	<script type="text/javascript" src="js/Dragon-Calculations.js"></script>
+	<script type="text/javascript" src="js/Pekka-Calculations.js"></script>
 	<script type="text/javascript" src="js/Reg-Troops-Window.js"></script>
 	</body>
 
